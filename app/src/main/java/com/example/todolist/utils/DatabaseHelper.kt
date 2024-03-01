@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-class DatabaseHelper(context: Context)
-    : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         const val DATABASE_NAME = "to_do_app.db"
         const val DATABASE_VERSION = 1
+        const val COLUMN_NAME_ID= "id"
 
         private const val SQL_CREATE_TABLE =
             "CREATE TABLE Task (" +
@@ -28,6 +28,9 @@ class DatabaseHelper(context: Context)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        if(oldVersion==1){
+            db.execSQL(SQL_DELETE_TABLE)
+        }
         destroyDatabase(db)
         onCreate(db)
     }
@@ -47,12 +50,6 @@ class DatabaseHelper(context: Context)
         var newRowId = db.insert("Task", null, values)
         Log.i("DATABASE", "New record id: $newRowId")
 
-        values = ContentValues()
-        values.put("task", "Limpiar el coche")
-        values.put("done", false)
-
-        newRowId = db.insert("Task", null, values)
-        Log.i("DATABASE", "New record id: $newRowId")
     }
 
     @SuppressLint("Range")

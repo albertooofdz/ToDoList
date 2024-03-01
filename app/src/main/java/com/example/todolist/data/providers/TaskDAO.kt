@@ -17,10 +17,10 @@ class TaskDAO(val context: Context) {
         //db.execSQL("INSERT INTO Task (task, done) VALUES ('Comprar leche', false)")
 
         var values = ContentValues()
-        values.put("task", task.task)
-        values.put("done", task.done)
+        values.put(Task.COLUMN_NAME_TASK, task.task)
+        values.put(Task.COLUMN_NAME_DONE, task.done)
 
-        var newRowId = db.insert("Task", null, values)
+        var newRowId = db.insert(Task.TABLE_NAME, null, values)
         Log.i("DATABASE", "New record id: $newRowId")
 
 
@@ -33,10 +33,10 @@ class TaskDAO(val context: Context) {
         //db.execSQL("UPDATE Task SET task = 'Comprar leche', done = true WHERE id = 1")
 
         var values = ContentValues()
-        values.put("task", task.task)
-        values.put("done", task.done)
+        values.put(Task.COLUMN_NAME_TASK, task.task)
+        values.put(Task.COLUMN_NAME_DONE, task.done)
 
-        var updatedRows = db.update("Task", values, "id =${task.id}", null)
+        var updatedRows = db.update(Task.TABLE_NAME, values, "id =${task.id}", null)
         Log.i("DATABASE", "Updated records: $updatedRows")
 
         db.close()
@@ -46,7 +46,7 @@ class TaskDAO(val context: Context) {
         val db = databaseManager.writableDatabase
         //db.execSQL("DELETE FROM Task WHERE id = 1")
 
-        val deletedRows = db.delete("Task", "id = 1", null)
+        val deletedRows = db.delete(Task.TABLE_NAME, "id = 1", null)
         Log.i("DATABASE", "Deleted rows: $deletedRows")
 
         db.close()
@@ -60,8 +60,8 @@ class TaskDAO(val context: Context) {
         val db = databaseManager.readableDatabase
 
         val cursor = db.query(
-            "Task",                 // The table to query
-            arrayOf("id","task", "done"),     // The array of columns to return (pass null to get all)
+            Task.TABLE_NAME,                 // The table to query
+            Task.COLUMN_NAMES,     // The array of columns to return (pass null to get all)
             "id=$id",                // The columns for the WHERE clause
             null,          // The values for the WHERE clause
             null,                   // don't group the rows
@@ -74,8 +74,8 @@ class TaskDAO(val context: Context) {
 
         if (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex("id"))
-            val taskName = cursor.getString(cursor.getColumnIndex("task"))
-            val done = cursor.getInt(cursor.getColumnIndex("done")) == 1
+            val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
+            val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
             Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
 
 
@@ -96,12 +96,8 @@ class TaskDAO(val context: Context) {
         val db = databaseManager.readableDatabase
 
         val cursor = db.query(
-            "Task",                 // The table to query
-            arrayOf(
-                "id",
-                "task",
-                "done"
-            ),     // The array of columns to return (pass null to get all)
+            Task.TABLE_NAME,                 // The table to query
+            Task.COLUMN_NAMES,    // The array of columns to return (pass null to get all)
             null,                // The columns for the WHERE clause
             null,          // The values for the WHERE clause
             null,                   // don't group the rows
@@ -114,8 +110,8 @@ class TaskDAO(val context: Context) {
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex("id"))
-            val taskName = cursor.getString(cursor.getColumnIndex("task"))
-            val done = cursor.getInt(cursor.getColumnIndex("done")) == 1
+            val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
+            val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
             Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
 
             val task: Task =Task(id, taskName, done)
