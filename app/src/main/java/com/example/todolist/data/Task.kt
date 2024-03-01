@@ -5,10 +5,11 @@ import android.content.Context
 import android.util.Log
 import com.example.todolist.utils.DatabaseHelper
 
-class Task(var id: Int, var task:String, var done: Boolean) {
+class Task(var id: Int,var day:String, var task:String, var done: Boolean) {
 
     companion object{
         const val TABLE_NAME="Task"
+        const val COLUMN_NAME_DAY="day"
         const val COLUMN_NAME_TASK="task"
         const val COLUMN_NAME_DONE ="Done"
         val COLUMN_NAMES = arrayOf(

@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         lunes.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "lunes")
+            intent.putExtra("DAY", "Lunes")
 
             startActivity(intent)
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         martes.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "martes")
+            intent.putExtra("DAY", "Martes")
 
             startActivity(intent)
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         miercoles.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "miercoles")
+            intent.putExtra("DAY", "Miercoles")
 
             startActivity(intent)
 
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         jueves.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "jueves")
+            intent.putExtra("DAY", "Jueves")
 
             startActivity(intent)
 
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         viernes.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "viernes")
+            intent.putExtra("DAY", "Viernes")
 
             startActivity(intent)
 
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         sabado.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "sabado")
+            intent.putExtra("DAY", "Sabado")
 
             startActivity(intent)
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         domingo.setOnClickListener{
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-            intent.putExtra("DAY", "domingo")
+            intent.putExtra("DAY", "Domingo")
 
             startActivity(intent)
 

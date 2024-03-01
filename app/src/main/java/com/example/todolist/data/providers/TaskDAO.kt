@@ -19,10 +19,10 @@ class TaskDAO(val context: Context) {
         var values = ContentValues()
         values.put(Task.COLUMN_NAME_TASK, task.task)
         values.put(Task.COLUMN_NAME_DONE, task.done)
+        values.put(Task.COLUMN_NAME_DAY,task.day)
 
         var newRowId = db.insert(Task.TABLE_NAME, null, values)
         Log.i("DATABASE", "New record id: $newRowId")
-
 
         db.close()
     }
@@ -35,6 +35,7 @@ class TaskDAO(val context: Context) {
         var values = ContentValues()
         values.put(Task.COLUMN_NAME_TASK, task.task)
         values.put(Task.COLUMN_NAME_DONE, task.done)
+        values.put(Task.COLUMN_NAME_DAY,task.day)
 
         var updatedRows = db.update(Task.TABLE_NAME, values, "id =${task.id}", null)
         Log.i("DATABASE", "Updated records: $updatedRows")
@@ -75,12 +76,13 @@ class TaskDAO(val context: Context) {
         if (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex("id"))
             val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
+            val day=cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_DAY))
             val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
             Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
 
 
 
-            task=Task(id,taskName,done)
+            task=Task(id,day,taskName,done)
         }
         cursor.close()
         db.close()
@@ -110,11 +112,12 @@ class TaskDAO(val context: Context) {
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex("id"))
+            val day=cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_DAY))
             val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
             val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
             Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
 
-            val task: Task =Task(id, taskName, done)
+            val task: Task =Task(id,day ,taskName, done)
 
             list.add(task)
         }
