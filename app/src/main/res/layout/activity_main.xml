@@ -6,25 +6,117 @@
     android:layout_height="match_parent"
     android:background="@color/softGreen"
     tools:context=".activities.MainActivity"
-    android:padding="15dp">
+    android:padding="15dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+          >
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                app:shapeAppearanceOverlay="@style/fab_square"
-                />
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
 
 
+                >
+
+                <LinearLayout
+                    android:id="@+id/lunesBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lunes"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="@color/black"
+                    android:textSize="45sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tareas pendientes"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+
+                    />
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
+                android:layout_marginStart="40dp">
+
+                <LinearLayout
+                    android:id="@+id/martesBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Martes"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="45sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tareas pendientes"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
 
@@ -35,13 +127,264 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="170dp"
+            android:layout_height="130dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="@color/softPink"
+           >
+
+            <LinearLayout
+                android:id="@+id/miercolesBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Miercoles"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="@color/black"
+                    android:textSize="45sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tareas pendientes"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
 
 
 
 
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
+                android:layout_marginStart="40dp">
+
+                <LinearLayout
+                    android:id="@+id/juevesBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jueves"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="45sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tareas pendientes"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
 
 
 
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:id="@+id/viernesBtn">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Viernes"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="45sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tareas pendientes"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
+                android:layout_marginStart="40dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/sabadoBtn"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sábado"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="45sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tareas pendientes"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                app:cardCornerRadius="20dp"
+                android:backgroundTint="@color/softPink"
+                >
+
+                <LinearLayout
+                    android:id="@+id/domingoBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Domingo"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="45sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tareas pendientes"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
 
 

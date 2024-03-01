@@ -37,6 +37,16 @@ android {
 
 dependencies {
 
+        val sqlite_version = "2.4.0"
+
+
+        // Kotlin
+    implementation("androidx.sqlite:sqlite-ktx:$sqlite_version")
+
+        // Implementation of the AndroidX SQLite interfaces via the Android framework APIs.
+   // implementation("androidx.sqlite:sqlite-framework:$sqlite_version")
+
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
