@@ -11,13 +11,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         const val DATABASE_NAME = "to_do_app.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 4
         const val COLUMN_NAME_ID= "id"
 
         private const val SQL_CREATE_TABLE =
             "CREATE TABLE Task (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "task TEXT," +
+                    "day TEXT," +
                     "done BOOLEAN)"
 
         private const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS Task"

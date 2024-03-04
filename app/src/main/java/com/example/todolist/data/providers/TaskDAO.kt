@@ -12,7 +12,7 @@ class TaskDAO(val context: Context) {
 
     private var databaseManager: DatabaseHelper = DatabaseHelper(context)
 
-    fun insert(task: Task) {
+    fun insert(task: Task){
         val db = databaseManager.writableDatabase
         //db.execSQL("INSERT INTO Task (task, done) VALUES ('Comprar leche', false)")
 
@@ -101,6 +101,41 @@ class TaskDAO(val context: Context) {
             Task.TABLE_NAME,                 // The table to query
             Task.COLUMN_NAMES,    // The array of columns to return (pass null to get all)
             null,                // The columns for the WHERE clause
+            null,          // The values for the WHERE clause
+            null,                   // don't group the rows
+            null,                   // don't filter by row groups
+            null               // The sort order
+        )
+
+        var list: MutableList<Task> = mutableListOf()
+
+
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndex("id"))
+            val day=cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_DAY))
+            val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
+            val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
+            Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
+
+            val task: Task =Task(id,day ,taskName, done)
+
+            list.add(task)
+        }
+        cursor.close()
+        db.close()
+
+        return list
+    }
+
+    @SuppressLint("Range")
+    fun findAllByDay(day: String): List<Task> {
+
+        val db = databaseManager.readableDatabase
+
+        val cursor = db.query(
+            Task.TABLE_NAME,                 // The table to query
+            Task.COLUMN_NAMES,    // The array of columns to return (pass null to get all)
+            "${Task.COLUMN_NAME_DAY} = '$day'",                // The columns for the WHERE clause
             null,          // The values for the WHERE clause
             null,                   // don't group the rows
             null,                   // don't filter by row groups
