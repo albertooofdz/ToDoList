@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.adapter.toDoAdapter
@@ -15,14 +17,20 @@ import com.example.todolist.data.providers.TaskDAO
 import com.example.todolist.utils.DatabaseHelper
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var lunes : LinearLayout
+    lateinit var lunesPendingTask : TextView
     lateinit var martes : LinearLayout
+    lateinit var martesPendingTask : TextView
     lateinit var miercoles : LinearLayout
+    lateinit var miercolesPendingTask : TextView
     lateinit var jueves : LinearLayout
+    lateinit var juevesPendingTask : TextView
     lateinit var viernes : LinearLayout
+    lateinit var viernesPendingTask : TextView
     lateinit var sabado : LinearLayout
+    lateinit var sabadoPendingTask : TextView
     lateinit var domingo : LinearLayout
+    lateinit var domingoPendingTask : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +40,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        lunesPendingTask.text = TaskDAO(this).countByDayAndDone("Lunes").toString()
+        martesPendingTask.text = TaskDAO(this).countByDayAndDone("Martes").toString()
+        miercolesPendingTask.text = TaskDAO(this).countByDayAndDone("Miercoles").toString()
+        juevesPendingTask.text = TaskDAO(this).countByDayAndDone("Jueves").toString()
+        viernesPendingTask.text = TaskDAO(this).countByDayAndDone("Viernes").toString()
+        sabadoPendingTask.text = TaskDAO(this).countByDayAndDone("Sabado").toString()
+        domingoPendingTask.text = TaskDAO(this).countByDayAndDone("Domingo").toString()
+
+    }
+
     fun initView(){
 
         lunes=findViewById(R.id.lunesBtn)
+        lunesPendingTask=findViewById(R.id.lunesTextView)
+        martesPendingTask=findViewById(R.id.martesTextView)
+        miercolesPendingTask=findViewById(R.id.miercolesTextView)
+        juevesPendingTask=findViewById(R.id.juevesTextView)
+        viernesPendingTask=findViewById(R.id.viernesTextView)
+        sabadoPendingTask=findViewById(R.id.sabadoTextView)
+        domingoPendingTask=findViewById(R.id.domingoTextView)
         martes=findViewById(R.id.martesBtn)
         miercoles=findViewById(R.id.miercolesBtn)
         jueves=findViewById(R.id.juevesBtn)

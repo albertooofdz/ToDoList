@@ -21,4 +21,8 @@
         <item name="colorButtonNormal">@color/black</item>
         <item name="colorControlHighlight">@color/design_default_color_background</item>
         <item name="android:textColor">@android:color/white</item> </style>
+    <style name="day_theme" parent="CardView.Light">
+        <item name="backgroundTint">@color/night_purple</item>
+    </style>
+
 </resources>

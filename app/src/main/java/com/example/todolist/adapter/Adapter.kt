@@ -15,7 +15,7 @@ import com.example.todolist.data.Task
 import com.example.todolist.data.providers.TaskDAO
 
 class toDoAdapter(var items:List<Task> = listOf(), val onClickListener: (position:Int)-> Unit,
-    val onRemoveListener:(position:Int)-> Unit)
+    val onRemoveListener:(position:Int)-> Unit,val onCheckBoxListener: (position: Int) -> Unit)
     : RecyclerView.Adapter<TaskViewHolder>() {
 
 
@@ -40,6 +40,9 @@ class toDoAdapter(var items:List<Task> = listOf(), val onClickListener: (positio
         holder.itemView.setOnClickListener{onClickListener(position)}
         holder.deleteBtn.setOnClickListener{onRemoveListener(position)}
 
+        holder.doneCB.setOnCheckedChangeListener { checkBox, isChecked ->
+            onCheckBoxListener(position)
+        }
 
 
     }

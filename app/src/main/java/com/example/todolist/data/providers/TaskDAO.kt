@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
-import androidx.loader.content.AsyncTaskLoader
 import com.example.todolist.data.Task
 import com.example.todolist.utils.DatabaseHelper
 
@@ -168,28 +167,23 @@ class TaskDAO(val context: Context) {
 
         val cursor = db.query(
             Task.TABLE_NAME,                 // The table to query
-            Task.COLUMN_NAMES,    // The array of columns to return (pass null to get all)
-            "${Task.COLUMN_NAME_DONE} = '$done' AND ${Task.COLUMN_NAME_DAY} = '$day'",                // The columns for the WHERE clause
+            arrayOf("COUNT(*)"),    // The array of columns to return (pass null to get all)
+            "${Task.COLUMN_NAME_DONE} = $done AND ${Task.COLUMN_NAME_DAY} = '$day'", // The columns for the WHERE clause
             null,          // The values for the WHERE clause
             null,                   // don't group the rows
             null,                   // don't filter by row groups
-            null               // The sort orderz
+            null               // The sort order
         )
 
         var list: MutableList<Task> = mutableListOf()
 
 
+        Log.i("DATABASE", "count: antes")
         while (cursor.moveToNext()) {
-            val id = cursor.getInt(cursor.getColumnIndex("id"))
-            val day=cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_DAY))
-            val taskName = cursor.getString(cursor.getColumnIndex(Task.COLUMN_NAME_TASK))
-            val done = cursor.getInt(cursor.getColumnIndex(Task.COLUMN_NAME_DONE)) == 1
-            Log.i("DATABASE", "$id -> Task: $taskName, Done: $done")
-
-            val task: Task =Task(id,day ,taskName, done)
-
-            list.add(task)
+            val count = cursor.getInt(0)
+            Log.i("DATABASE", "count: $count")
         }
+        Log.i("DATABASE", "count: despues")
         cursor.close()
         db.close()
 
@@ -197,4 +191,23 @@ class TaskDAO(val context: Context) {
     }
 
 
+    fun countByDayAndDone(day: String, done: Boolean = false): Int {
+        val db = databaseManager.readableDatabase
+
+        val cursor = db.query(
+                Task.TABLE_NAME,                 // The table to query
+        arrayOf("COUNT(*)"),    // The array of columns to return (pass null to get all)
+        "${Task.COLUMN_NAME_DONE} = $done AND ${Task.COLUMN_NAME_DAY} = '$day'", // The columns for the WHERE clause
+        null,          // The values for the WHERE clause
+        null,                   // don't group the rows
+        null,                   // don't filter by row groups
+        null               // The sort order
+        )
+
+        if (cursor.moveToNext()) {
+            return cursor.getInt(0)
+        } else {
+            return 0
+        }
+    }
 }

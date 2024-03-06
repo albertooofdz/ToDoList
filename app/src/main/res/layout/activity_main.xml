@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".activities.MainActivity"
+    android:background="@color/white"
     android:padding="15dp"
     >
 
@@ -27,6 +27,7 @@
                 android:layout_height="130dp"
                 app:cardCornerRadius="20dp"
                 android:backgroundTint="@color/softBlue"
+
 
 
                 >
@@ -52,9 +53,10 @@
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/lunesTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="45sp"
                     android:gravity="center"/>
@@ -100,9 +102,10 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/martesTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="45sp"
                         android:gravity="center"/>
@@ -163,9 +166,10 @@
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/miercolesTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="45sp"
                     android:gravity="center"/>
@@ -209,9 +213,10 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/juevesTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="45sp"
                         android:gravity="center"/>
@@ -264,9 +269,10 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/viernesTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="45sp"
                         android:gravity="center"/>
@@ -311,9 +317,10 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/sabadoTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="45sp"
                         android:gravity="center"/>
@@ -366,9 +373,10 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/domingoTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="45sp"
                         android:gravity="center"/>

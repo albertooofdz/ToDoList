@@ -4,9 +4,12 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
+        android:id="@+id/editTaskBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true">
     <CheckBox
         android:id="@+id/doneCB"
         android:layout_width="wrap_content"

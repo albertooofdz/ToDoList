@@ -12,5 +12,7 @@
     <color name="softPink">#Ffdde6</color>
     <color name="transparent">#00FF0000</color>
     <color name="red">#FF0000</color>
+    <color name="night_purple">#683475</color>
+    <color name="soft_black">#373532</color>
 
 </resources>

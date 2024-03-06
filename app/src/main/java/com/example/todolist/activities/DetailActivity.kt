@@ -22,7 +22,6 @@ import com.example.todolist.data.providers.TaskDAO
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DetailActivity : AppCompatActivity() {
-
     lateinit var taskList:  MutableList<Task>
     lateinit var adapter: toDoAdapter
     lateinit var recyclerView: RecyclerView
@@ -41,6 +40,8 @@ class DetailActivity : AppCompatActivity() {
 
         taskDAO=TaskDAO(this)
 
+        //taskDAO.findAllByDoneAndDay(false, day)
+
         //taskDAO.insert(Task(-1, "Lunes", "Comprar leche", false))
 
 
@@ -53,7 +54,6 @@ class DetailActivity : AppCompatActivity() {
 
     fun checkDay(){
         recyclerView=findViewById(R.id.recyclerView)
-        //doneCB=findViewById(R.id.doneCB)
         //taskTV=findViewById(R.id.taskTV)
         addTaskBtn=findViewById(R.id.addTaskBtn)
 
@@ -61,13 +61,15 @@ class DetailActivity : AppCompatActivity() {
             onItemClickListener(it)
         }, {
             onRemoveListener(it)
-        })
+        }, {
+            onCheckBoxListener(it)})
         addTaskBtn.setOnClickListener {
 
             onCreateDialog()
 
 
         }
+
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -112,6 +114,14 @@ class DetailActivity : AppCompatActivity() {
         taskDAO.delete(task)
         taskList.removeAt(position)
         adapter.notifyDataSetChanged()
+    }
+    private fun onCheckBoxListener(position: Int){
+        val task:Task = taskList[position]
+        task.done=!task.done
+        taskDAO.update(task)
+        adapter.notifyItemChanged(position)
+
+
     }
 
 
