@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.adapter.toDoAdapter
@@ -31,17 +33,23 @@ class MainActivity : AppCompatActivity() {
     lateinit var sabadoPendingTask : TextView
     lateinit var domingo : LinearLayout
     lateinit var domingoPendingTask : TextView
+    lateinit var deleteAllTask: Button
+    lateinit var taskDAO:TaskDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        taskDAO=TaskDAO(this)
         initView()
 
     }
 
     override fun onResume() {
         super.onResume()
+        refreshData()
+    }
+
+    private fun refreshData() {
         lunesPendingTask.text = TaskDAO(this).countByDayAndDone("Lunes").toString()
         martesPendingTask.text = TaskDAO(this).countByDayAndDone("Martes").toString()
         miercolesPendingTask.text = TaskDAO(this).countByDayAndDone("Miercoles").toString()
@@ -49,11 +57,10 @@ class MainActivity : AppCompatActivity() {
         viernesPendingTask.text = TaskDAO(this).countByDayAndDone("Viernes").toString()
         sabadoPendingTask.text = TaskDAO(this).countByDayAndDone("Sabado").toString()
         domingoPendingTask.text = TaskDAO(this).countByDayAndDone("Domingo").toString()
-
     }
 
     fun initView(){
-
+        deleteAllTask=findViewById(R.id.deleteAllTaskBtn)
         lunes=findViewById(R.id.lunesBtn)
         lunesPendingTask=findViewById(R.id.lunesTextView)
         martesPendingTask=findViewById(R.id.martesTextView)
@@ -126,7 +133,36 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        deleteAllTask.setOnClickListener{
+           //taskDAO.deleteAll()
+            //refreshData()
+            onCreateDialog()
 
+        }
+
+
+    }
+    private fun onCreateDialog() {
+        val builder = AlertDialog.Builder(this)
+
+        // Inflate and set the layout for the dialog.
+        // Pass null as the parent view because it's going in the dialog
+        builder.setTitle("¿Desea borrar TODAS las tareas?")
+        // layout.
+        builder.setView(R.layout.delete_all_task)
+        // Add action buttons.
+        builder.setPositiveButton("Eliminar") { dialog, id ->
+
+            taskDAO.deleteAll()
+            refreshData()
+
+            dialog.cancel()
+        }
+        builder.setNegativeButton("Cancel") { dialog, id ->
+            dialog.cancel()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 }
 

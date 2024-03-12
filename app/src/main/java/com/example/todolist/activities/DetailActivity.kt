@@ -109,6 +109,7 @@ class DetailActivity : AppCompatActivity() {
        alertDialog.show()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun onRemoveListener(position:Int){
         val task:Task = taskList[position]
         taskDAO.delete(task)

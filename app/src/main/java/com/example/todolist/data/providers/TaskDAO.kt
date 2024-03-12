@@ -53,6 +53,17 @@ class TaskDAO(val context: Context) {
 
     }
 
+    fun deleteAll() {
+        val db = databaseManager.writableDatabase
+        //db.execSQL("DELETE FROM Task WHERE id = 1")
+
+        val deletedRows = db.delete(Task.TABLE_NAME, null, null)
+        Log.i("DATABASE", "Deleted rows: $deletedRows")
+
+        db.close()
+
+    }
+
     @SuppressLint("Range")
     fun find(id:Int): Task? {
 
